@@ -1,22 +1,22 @@
 ﻿# by Adam.Congdon
-# this tool should remove all backups from configuration database but skip replicas
-# see here for more detail: https://helpcenter.veeam.com/docs/backup/powershell/remove-vbrrestorepoint.html?ver=95
+# see here for more detail: https://helpcenter.veeam.com/docs/backup/powershell/
 # Use at your own risk - I tested with success in my lab.
 
-Add-PSSnapin VeeamPSSnapin
-$backup = Get-VBRBackup
+# WHAT DOES IT DO:
+# this tool should remove all backups from configuration database but skip replicas, and encrypted backups
 
-$restorepoints = Get-VBRRestorePoint
-foreach($point in $restorepoints)
+Add-PSSnapin VeeamPSSnapin
+$backups = Get-VBRBackup
+
+foreach($backup in $backups)
 {
-    #write-host $point.backupid
-    if ($backup.id -notcontains $point.backupid)
+    Write-Host "Removing backups from: " $backup.Name -ForegroundColor Yellow
+    Try
     {
-        
+        Remove-VBRBackup $backup -FromDisk:$false -confirm:$false > $null
     }
-    else
+    Catch
     {
-        Remove-VBRRestorePoint $point -Confirm:$false
+        Write-Host "Failed to remove backup for " $backup.Name " try doing so manually" -ForegroundColor Red
     }
 }
-
