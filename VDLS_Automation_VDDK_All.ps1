@@ -61,43 +61,9 @@ $thumb = Get-SSLThumbprint $vcurl
 ############################################
 
 # VDLS Paths:
-# pick VDDK Version to use:
-$version = Read-Host('Which VDDK Version shall we use? Enter 1 for 6.5; 2 for 6.0; 3 for 5.5: ')
-Switch ($version)
-    {
-        1
-            {
-                $initEx = "C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64\doc\functions\VixDiskLib_InitEx.txt"
-                $libDir = "C:\Program Files (x86)\Veeam\Backup Transport\x64\vddk_6_5"
-                $libList = gci $libDir -ErrorAction SilentlyContinue
-                if ($libList -eq $null)
-                    {
-                        Write-Host 'Cannot find Veeam VDDK files. Is this a proxy server?' -ForegroundColor Red
-                        break
-                    }
-            }
-        2
-            {
-                $initEx = "C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64\initex.txt"
-                $libDir = "C:\Program Files (x86)\Veeam\Backup Transport\x64\vddk_6_0"
-                $libList = gci $libDir -ErrorAction SilentlyContinue
-                if($libList -eq $null)
-                {
-                    Write-Host 'Cannot find Veeam VDDK files. Is this a proxy server?' -ForegroundColor Red
-                    break
-                }
-            }
-        3
-            {
-                
-            }
-    }
-$isFileThere = gci C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64 -ErrorAction SilentlyContinue
-if($isFileThere -eq $null)
-{
-    Write-Host 'Please Extract the folder "VMware-vix-disklib-6.0.0-2498720.x86_64" to C:\temp and retry.' -ForegroundColor Red
-    Break
-}
+
+
+
 
 
 # define user name and pass ! this is in plaintext
@@ -134,8 +100,56 @@ $readOrWrite = Read-Host("Read or Write Test? Enter 1 for Read or 2 for Write: "
 if($readOrWrite -eq 1) {$mode = "-readbench"} else {$mode = "-writebench"}
 
 # Execute!!
-#C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64\bin\vixDiskLibSample.exe $mode 1024 -host $vcenter -user $userName -password $pass -mode $transport -vm $myVM -ssmoref $snap -thumb $thumb -initex $initEx -libdir $libDir $diskPath.FileName
-C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64\bin\vixDiskLibSample.exe $mode 1024 -host $vcenter -user $userName -password $pass -mode $transport -vm "$myVM" -ssmoref "$snap" -thumb $thumb -initex "$initEx" -libdir "$libDir" $diskPath.FileName
+# pick VDDK Version to use:
+$version = Read-Host('Which VDDK Version shall we use? Enter 1 for 6.5; 2 for 6.0; 3 for 5.5: ')
+Switch ($version)
+    {
+        1
+            {
+                $isFileThere = gci C:\temp\VMware-vix-disklib-6.5.0-4604867.x86_64 -ErrorAction SilentlyContinue
+                    if($isFileThere -eq $null)
+                    {
+                        Write-Host 'Please Extract the folder "VMware-vix-disklib-6.0.0-2498720.x86_64" to C:\temp and retry.' -ForegroundColor Red
+                        Break
+                    }
+
+                
+                $initEx = "C:\temp\VMware-vix-disklib-6.5.0-4604867.x86 64\doc\functions\VixDiskLib_InitEx.txt"
+                $libDir = "C:\Program Files (x86)\Veeam\Backup Transport\x64\vddk_6_5"
+                $libList = gci $libDir -ErrorAction SilentlyContinue
+                if ($libList -eq $null)
+                    {
+                        Write-Host 'Cannot find Veeam VDDK files. Is this a proxy server?' -ForegroundColor Red
+                        break
+                    }
+                C:\temp\VMware-vix-disklib-6.5.0-4604867.x86_64\bin\vixDiskLibSample.exe $mode 1024 -host $vcenter -user $userName -password $pass -mode $transport -vm "$myVM" -ssmoref "$snap" -thumb $thumb -initex "$initEx" -libdir "$libDir" $diskPath.FileName
+            }
+        2
+            {
+                $isFileThere = gci C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64 -ErrorAction SilentlyContinue
+                    if($isFileThere -eq $null)
+                    {
+                        Write-Host 'Please Extract the folder "VMware-vix-disklib-6.0.0-2498720.x86_64" to C:\temp and retry.' -ForegroundColor Red
+                        Break
+                    }
+                $initEx = "C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64\initex.txt"
+                $libDir = "C:\Program Files (x86)\Veeam\Backup Transport\x64\vddk_6_0"
+                $libList = gci $libDir -ErrorAction SilentlyContinue
+                if($libList -eq $null)
+                {
+                    Write-Host 'Cannot find Veeam VDDK files. Is this a proxy server?' -ForegroundColor Red
+                    break
+                }
+                C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64\bin\vixDiskLibSample.exe $mode 1024 -host $vcenter -user $userName -password $pass -mode $transport -vm "$myVM" -ssmoref "$snap" -thumb $thumb -initex "$initEx" -libdir "$libDir" $diskPath.FileName
+            }
+        3
+            {
+                
+            }
+    }
+
+
+#C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64\bin\vixDiskLibSample.exe $mode 1024 -host $vcenter -user $userName -password $pass -mode $transport -vm "$myVM" -ssmoref "$snap" -thumb $thumb -initex "$initEx" -libdir "$libDir" $diskPath.FileName
 
 # Clean up snaps
 Write-Host "Removing  Snapshot: " $snapString.Name -ForegroundColor Green
