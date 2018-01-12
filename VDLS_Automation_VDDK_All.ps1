@@ -68,7 +68,7 @@ Switch ($version)
         1
             {
                 $initEx = "C:\temp\doc\functions\VixDiskLib_InitEx.txt"
-                $libDir = "C:\Program Files (x86)\Veeam\Backup Transport\x64\vddk_6_5\"
+                $libDir = "C:\Program Files (x86)\Veeam\Backup Transport\x64\vddk_6_5"
                 $libList = gci $libDir -ErrorAction SilentlyContinue
                 if ($libList -eq $null)
                     {
@@ -79,7 +79,7 @@ Switch ($version)
         2
             {
                 $initEx = "C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64\initex.txt"
-                $libDir = "C:\Program Files (x86)\Veeam\Backup Transport\x64\vddk_6_0\"
+                $libDir = "C:\Program Files (x86)\Veeam\Backup Transport\x64\vddk_6_0"
                 $libList = gci $libDir -ErrorAction SilentlyContinue
                 if($libList -eq $null)
                 {
@@ -134,6 +134,7 @@ $readOrWrite = Read-Host("Read or Write Test? Enter 1 for Read or 2 for Write: "
 if($readOrWrite -eq 1) {$mode = "-readbench"} else {$mode = "-writebench"}
 
 # Execute!!
+#C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64\bin\vixDiskLibSample.exe $mode 1024 -host $vcenter -user $userName -password $pass -mode $transport -vm $myVM -ssmoref $snap -thumb $thumb -initex $initEx -libdir $libDir $diskPath.FileName
 C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64\bin\vixDiskLibSample.exe $mode 1024 -host $vcenter -user $userName -password $pass -mode $transport -vm "$myVM" -ssmoref "$snap" -thumb $thumb -initex "$initEx" -libdir "$libDir" $diskPath.FileName
 
 # Clean up snaps
