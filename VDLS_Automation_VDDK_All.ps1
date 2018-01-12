@@ -67,7 +67,7 @@ Switch ($version)
     {
         1
             {
-                $initEx = "C:\temp\doc\functions\VixDiskLib_InitEx.txt"
+                $initEx = "C:\temp\VMware-vix-disklib-6.0.0-2498720.x86_64\doc\functions\VixDiskLib_InitEx.txt"
                 $libDir = "C:\Program Files (x86)\Veeam\Backup Transport\x64\vddk_6_5"
                 $libList = gci $libDir -ErrorAction SilentlyContinue
                 if ($libList -eq $null)
