@@ -1,0 +1,7 @@
+C:\Users\adam.congdon\Source\Repos\myTools\LogScrubber\LogScrubber\obj\Debug\LogScrubber.csprojResolveAssemblyReference.cache
+C:\Users\adam.congdon\Source\Repos\myTools\LogScrubber\LogScrubber\obj\Debug\LogScrubber.csproj.CoreCompileInputs.cache
+C:\Users\adam.congdon\Source\Repos\myTools\LogScrubber\LogScrubber\bin\Debug\LogScrubber.exe.config
+C:\Users\adam.congdon\Source\Repos\myTools\LogScrubber\LogScrubber\bin\Debug\LogScrubber.exe
+C:\Users\adam.congdon\Source\Repos\myTools\LogScrubber\LogScrubber\bin\Debug\LogScrubber.pdb
+C:\Users\adam.congdon\Source\Repos\myTools\LogScrubber\LogScrubber\obj\Debug\LogScrubber.exe
+C:\Users\adam.congdon\Source\Repos\myTools\LogScrubber\LogScrubber\obj\Debug\LogScrubber.pdb
