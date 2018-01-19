@@ -16,5 +16,6 @@ namespace LogScrubber
             fileList = newList;
             return fileList;
         }
+        
     }
 }
