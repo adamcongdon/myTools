@@ -51,8 +51,12 @@ namespace LogScrubber
             {
                 using (StreamReader sr = new StreamReader(file))
                     {
-                        string outPath = Path.GetFullPath(file);
-                        string outFile = @outPath + "__SCRUBBED.log";
+                    const string append = "_SCRUBBED.log";
+                    const string remove = "_SCRUBBED";
+                    string fileName = Path.GetFileNameWithoutExtension(file);
+                    string outPath = Path.GetDirectoryName(file);
+
+                        string outFile = @outPath + "\\"+ fileName + append;
                         using (StreamWriter sw = new StreamWriter(outFile))
                         { 
                         string line;
@@ -63,9 +67,9 @@ namespace LogScrubber
                                 const string ip1 = "192";
                                 const string ip2 = "10.";
                                 const string ip3 = "172";
-                                const string ver = "9.5";
-                                const string ver1 = "9.0";
-                                const string ver2 = "8.0";
+                                const string ver = "9.5.0";
+                                const string ver1 = "9.0.0";
+                                const string ver2 = "8.0.0";
                                 const string lb = "127.0.0.1"; 
 
                                 if (line.Contains("startTime"))
@@ -118,6 +122,7 @@ namespace LogScrubber
                             }
                         }
                 }
+                
                 File.Delete(file);
             }
             Console.WriteLine("List of all found IPs: \n");
@@ -125,9 +130,6 @@ namespace LogScrubber
             {
                 Console.WriteLine(addr);
             }
-            
-            Console.WriteLine("PRESS ANY KEY TO CONTINUE");
-            Console.ReadKey();
         }
         public static string[] Params(out string[] phrases)
         {
