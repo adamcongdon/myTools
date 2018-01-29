@@ -17,7 +17,7 @@ namespace LogScrubber
             setPath = Console.ReadLine();
 
             int x = 1;
-            while (x < 4)
+            while (x < 7)
             {
                 FileLister.List(setPath, out List<string> myFiles);
                 Console.ForegroundColor = ConsoleColor.Magenta;
