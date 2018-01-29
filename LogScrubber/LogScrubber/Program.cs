@@ -1,4 +1,11 @@
-﻿using System;
+﻿/////////////////////////////////
+//  name: LogScrubber
+//  date: 1/29/2018
+//  author: ACongdon
+//  purpose: Scrub IPs and/or Hostnames from log files. Rewrites log with scrubbed info.
+/////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
