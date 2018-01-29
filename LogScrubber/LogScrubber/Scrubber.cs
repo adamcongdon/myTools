@@ -125,7 +125,7 @@ namespace LogScrubber
                 
                 File.Delete(file);
             }
-            Console.WriteLine("List of all found IPs: \n");
+            Console.WriteLine("List of all found IPs (If no IPs appear, log is clean): \n");
             foreach (string addr in ipList.Distinct())
             {
                 Console.WriteLine(addr);

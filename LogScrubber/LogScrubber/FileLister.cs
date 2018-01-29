@@ -11,7 +11,7 @@ namespace LogScrubber
     {
         public static List<string> List(string path, out List<string> fileList)
         {
-            List<string> newList = new List<string>(Directory.GetFiles(path, "*.log", SearchOption.AllDirectories));
+            List<string> newList = new List<string>(Directory.GetFiles(path, "*.*", SearchOption.AllDirectories));
 
             fileList = newList;
             return fileList;
