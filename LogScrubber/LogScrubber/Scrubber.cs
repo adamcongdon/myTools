@@ -51,8 +51,8 @@ namespace LogScrubber
             {
                 using (StreamReader sr = new StreamReader(file))
                     {
-                    const string append = "_SCRUBBED.log";
-                    const string remove = "_SCRUBBED";
+                    const string append = "_CLN.log";
+                    //const string remove = "_SCRUBBED";
                     string fileName = Path.GetFileNameWithoutExtension(file);
                     string outPath = Path.GetDirectoryName(file);
 

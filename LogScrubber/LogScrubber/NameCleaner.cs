@@ -13,14 +13,15 @@ namespace LogScrubber
         {
             foreach (string file in fileList)
             {
-                const string remStr = "_SCRUBBED_SCRUBBED";
+                const string remStr = "_CLN_CLN";
                 if (file.Contains(remStr))
                 {
                     string src = Path.GetFullPath(file);
                     string name = Path.GetFileName(file);
                     string newName = name.Replace(remStr, "");
+                    string finName = newName + "-SCRBD.log";
                     string tarDir = Path.GetDirectoryName(file);
-                    File.Move(src, tarDir + "\\" + newName);
+                    File.Move(src, tarDir + "\\" + finName);
                 }
             }
 
