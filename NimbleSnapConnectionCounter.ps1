@@ -33,10 +33,22 @@ $mod = Get-Module -ListAvailable "HPENimblePowerShellToolkit"
 if($mod -eq $null)
     {
         Write-Host("HPE Nimble PS Module not found. Quitting")
+        Write-Host("See here for details: https://community.hpe.com/t5/HPE-Storage-Tech-Insiders/Introducing-the-Nimble-PowerShell-Toolkit-1-0/ba-p/6986519#.WxVT50gvyUk") -ForegroundColor Yellow
         exit
     }
 else
     {
+        Try
+            {
+                $modPath = "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\HPENimblePowerShellToolkit"
+                gci -Path $modPath -Recurse | Unblock-File
+                
+            }
+        Catch
+            {
+                Write-Host("Failure on Unblock. Quitting")
+                exit
+            }
         Import-Module -Name $mod
     }
 
