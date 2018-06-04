@@ -19,8 +19,8 @@ if($isModule -eq $null)
         }
         catch
         {
-            Write-Host("Cannot install Posh-SSH Module")
-            quit
+            Write-Host("Cannot install Posh-SSH Module. Quitting")
+            exit
         }
     }
 else
@@ -33,7 +33,7 @@ $mod = Get-Module -ListAvailable "HPENimblePowerShellToolkit"
 if($mod -eq $null)
     {
         Write-Host("HPE Nimble PS Module not found. Quitting")
-        quit
+        exit
     }
 else
     {
