@@ -9,6 +9,8 @@
 
 #> 
 
+#Requires -Version 3
+
 #check if Posh-SSH is installed
 $isModule = Get-Module -Name Posh-SSH
 if($isModule -eq $null)
