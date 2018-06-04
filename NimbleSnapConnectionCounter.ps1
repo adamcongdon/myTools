@@ -176,9 +176,3 @@ $x = 0
         Disconnect-NSGroup
         Start-Sleep 10
     }
-
-
-
-#Disconnect SSH
-
-Write-host("Disconnect successful")
