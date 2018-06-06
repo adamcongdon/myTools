@@ -114,7 +114,7 @@ $certCallback = @"
 
  #>
 
- Connect-NSGroup -Group 10.0.0.50 -Credential $credentials
+ Connect-NSGroup -Group $group -Credential $credentials
 
 #1: List Vols
 $volList = Get-NSVolume
@@ -123,7 +123,7 @@ $x = 0
   while($x -ne 1000)
 {
         #connect!
-        Connect-NSGroup -Group 10.0.0.50 -Credential $credentials
+        Connect-NSGroup -Group $group -Credential $credentials
         $ssh = New-SSHSession -ComputerName $group -Credential $credentials
         $outArray = @()
         $newArray = @()
